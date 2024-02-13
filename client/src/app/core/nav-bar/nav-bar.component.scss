@@ -1,0 +1,86 @@
+/* Cart Styles */
+.bigger-cart {
+  font-size: 2em;
+}
+.cart-icon-container {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+
+.cart-icon-zero{
+  position: relative;
+  display: inline-block;
+}
+
+.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.cart-number {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff5722;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+/* Improve Link Styles */
+a {
+  font-size: 15px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+/* Enhance Navigation Styles */
+.superNav {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Form Control Styles */
+.form-control {
+  outline: none;
+  box-shadow: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+
+
+
+/* Center on Mobile */
+@media screen and (max-width: 540px) {
+  .centerOnMobile {
+    text-align: center;
+  }
+
+
+.navbar {
+  border-bottom: 5px solid #E5E9EF;
+}
+
+.navbar {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+}

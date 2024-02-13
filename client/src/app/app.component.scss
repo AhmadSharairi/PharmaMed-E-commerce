@@ -1,0 +1,14 @@
+/* Ensure the main content area takes up at least the full viewport height */
+.main {
+  min-height: 100vh;
+}
+
+/* Create a space at the bottom to prevent content from being obscured by the footer */
+.push {
+  height: 50px;
+}
+.wrapper {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}

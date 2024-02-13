@@ -1,0 +1,37 @@
+# Ignore generated files
+/bin/
+/obj/
+
+# Ignore node.js dependencies
+node_modules/
+package-lock.json
+
+# Ignore Visual Studio solution file
+PharmaMed.sln
+
+# Ignore user-specific files and directories
+.vscode/
+*.user
+*.suo
+*.userosscache
+
+# Ignore build results and logs
+/build/
+/logs/
+
+# Ignore compiled output of Angular client
+client/dist/
+
+# Ignore compiled output of .NET Core
+API/bin/
+API/obj/
+Core/bin/
+Core/obj/
+Infrastructure/bin/
+Infrastructure/obj/
+
+# Ignore specific directories
+wwwroot/
+
+# Ignore npm debug logs
+npm-debug.log

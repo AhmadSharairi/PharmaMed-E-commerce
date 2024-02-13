@@ -1,0 +1,50 @@
+<div class="container ">
+  <div class="row mt-3">
+<div class="my-3 col-lg-9 mx-auto">
+  <h4>Choose your delivery method</h4>
+</div>
+    <div class="col-lg-9 mx-auto">
+
+      <form [formGroup]="stepDeliveryForm"  novalidate #formRef="ngForm">
+        <div class="radio-inputs">
+          <ng-container *ngFor="let method of deliveryMethods">
+            <label for="{{ method.id }}">
+              <input
+               (click)="setShippingPrice(method)"
+
+                type="radio"
+                id="{{ method.id }}"
+                name="deliveryMethod"
+                [value]="method.id"
+                class="radio-input"
+                formControlName="deliveryMethod"
+              >
+
+              <span class="radio-tile">
+                <span class="radio-icon">
+                  <i class='bx bxs-package'></i>
+                </span>
+                <span class="radio-label">{{ method.shortName }}</span>
+                <span class="radio-label">{{ method.price | currency }}</span>
+
+                <div class="description">
+                  <p>{{ method.description }}</p>
+                </div>
+              </span>
+            </label>
+          </ng-container>
+        </div>
+
+        <div class="d-flex justify-content-between flex-row mb-5 my-5">
+          <button type="button" class="btn btn-outline-primary" cdkStepperPrevious>
+            <i class="fa fa-angle-left"></i> Back to Address
+          </button>
+
+          <button   [disabled]="this.stepDeliveryForm.invalid" type="submit"  (click)="stepDeliverySubmit()"  class="btn btn-primary" cdkStepperNext>
+            Go to Review <i class="fa fa-angle-right"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

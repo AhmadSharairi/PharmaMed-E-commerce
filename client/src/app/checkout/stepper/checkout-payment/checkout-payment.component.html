@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row mt-3">
+    <div class="col-lg-9 mx-auto">
+
+      <div class="payment">
+        <div class="payment-tab">
+          <h4>Payment Gateway Details</h4>
+        </div>
+        <div class="payment-tab payment-tab-isActive">
+          <div class="mt-1" [formGroup]="stepPaymentForm">
+
+
+            <div class="payment-radioGroup  ">
+              <label for="creditCart">Enter Credit Card Information:</label>
+              <img class="payment-cardimg" src="//my-assets.netlify.com/codepen/dailyui-002/img_cards.svg">
+            </div>
+
+
+
+            <div class="textInputGroup my-2">
+              <label for="nameOnCard">Name on card</label>
+              <input
+                type="text"
+                class="form-control"
+                [maxLength]="30"
+                formControlName="nameOnCard"
+                required
+                [ngClass]="{'is-invalid': stepPaymentForm.get('nameOnCard').invalid && stepPaymentForm.get('nameOnCard').touched}"
+              >
+              <div *ngIf="stepPaymentForm.get('nameOnCard').invalid && stepPaymentForm.get('nameOnCard').touched" class="invalid-feedback">
+                <div *ngIf="stepPaymentForm.get('nameOnCard').hasError('required')">Name is required.</div>
+                <div *ngIf="stepPaymentForm.get('nameOnCard').hasError('minLengthExceeded')">Name cannot be less than 5 characters.</div>
+                <div *ngIf="stepPaymentForm.get('nameOnCard').hasError('maxLengthExceeded')">Name cannot exceed 26 characters.</div>
+                <div *ngIf="stepPaymentForm.get('nameOnCard').hasError('pattern') && !stepPaymentForm.get('nameOnCard').hasError('minLengthExceeded') && !stepPaymentForm.get('nameOnCard').hasError('maxLengthExceeded')">
+                  Please enter a valid name.
+                </div>
+              </div>
+            </div>
+
+
+
+            <div class="row mb-3 my-3">
+              <div class="col-md-6 mb-3">
+                <div class="form-floating">
+                  <div class="form-control" #cardNumber></div>
+                  <label for="cardNumber">Card number</label>
+                  <span class="text-danger" *ngIf="cardExpiry">{{ cardErrors }}</span>
+
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <div class="form-floating">
+                  <div class="form-control" #cardExpiry></div>
+                  <label>Card Expiry</label>
+
+                </div>
+              </div>
+
+              <div class="col-md-3 mb-3">
+                <div class="form-floating">
+                  <div class="form-control" #cardCvc></div>
+                  <label>Card Cvc</label>
+                  <div class="textInputGroup"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-9 mx-auto my-3">
+      <div class="d-flex justify-content-between flex-md-row flex-column mb-5">
+
+        <button class="btn btn-outline-primary mb-2 mb-md-0" cdkStepperPrevious>
+          <i class="fa fa-angle-left"></i> Back to review
+        </button>
+        <button   [disabled]="loading
+        || stepPaymentForm.invalid
+        ||!cardNumberValid
+        ||!cardCvcValid
+        ||!cardExpiryValid"
+         class="btn btn-primary" type="submit" (click)="submitOrder()">
+          Submit order <i class="fa fa-angle-right"></i>
+          <i *ngIf="loading" class="fa fa-spinner fa-spin"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

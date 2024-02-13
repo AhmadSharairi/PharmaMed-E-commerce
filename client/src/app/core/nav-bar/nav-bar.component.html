@@ -1,0 +1,89 @@
+<div class="superNav border-bottom py-2 bg-light"></div>
+<nav class="navbar navbar-expand-lg bg-white sticky-top navbar-light p-3 shadow-sm fixed-top">
+
+  <div class="container">
+    <a class="navbar-brand" href="#"><i class="fa-solid fa-shop me-2"></i> <strong>PharmaMed</strong></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="#" routerLink="/" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="#" routerLink="/shop" routerLinkActive="active">Shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" routerLink="/learn" href="#">Learn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" href="#" routerLink="/contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2 text-uppercase" routerLink="/about" routerLinkActive="active" href="#">About</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav ms-auto ">
+
+
+
+        <li class="nav-item mx-1">
+          <div routerLink="/basket" class="cart-icon-container">
+            <i class="bx bx-shopping-bag bigger-cart"></i>
+            <span *ngIf="(basket$ | async) as  basket" class="cart-number"> {{getCount(basket.items)}}</span>
+          </div>
+        </li>
+
+
+
+        <li class="nav-item">
+          <div *ngIf="(accountService.currentUser$ | async) === null" class="mx-3">
+            <a routerLink="/account/login" class="btn btn-primary me-2 text-uppercase">Login</a>
+            <a routerLink="/account/register" class="btn btn-outline-secondary me-3 text-uppercase">Sign up</a>
+          </div>
+
+
+          <!-- When User Login-->
+          <div *ngIf="accountService.currentUser$ | async as user">
+            <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
+              <a dropdownToggle>
+                <div class="d-flex align-items-center">
+                  <span class="nav-link "><i class='bx bx-user-circle me-1'></i>Welcome, {{ user.displayName }}</span>
+                  <i class="fa fa-chevron-down"></i>
+                </div>
+              </a>
+              <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
+                <li class="py-1">
+                  <a routerLink="/basket" class="dropdown-item">
+                    <i class="fa fa-shopping-cart me-3"></i> Your Cart
+                  </a>
+                </li>
+                <li class="py-1">
+                  <a routerLink="/orders" class="dropdown-item">
+                    <i class="fa fa-history me-3"></i> View orders
+                  </a>
+                </li>
+                <div class="dropdown-divider"></div>
+                <li class="py-1">
+                  <a routerLink="/" (click)="logout()" class="dropdown-item">
+                    <i class="fa fa-sign-out me-3"></i> Logout
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </li>
+      </ul>
+
+
+
+    </div>
+  </div>
+</nav>

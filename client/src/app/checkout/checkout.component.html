@@ -1,0 +1,58 @@
+
+  <div >
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- cart -->
+        <div class="col-lg-9 my-5">
+
+          <div class="main my-5">
+            <ng-stepper #cdkStepper [linear]="true">
+              <cdk-step [stepControl]="stepOne.stepAddressForm" [optional]="false">
+                <ng-template cdkStepLabel>
+                  <div class="step-bullet">1</div>
+                  <div class="step-title">Address<span class="required"></span></div>
+                </ng-template>
+                <app-checkout-address #stepOne></app-checkout-address>
+              </cdk-step>
+
+              <cdk-step [stepControl]="stepTwo.stepDeliveryForm" [optional]="false">
+                <ng-template cdkStepLabel>
+                  <div class="step-bullet">2</div>
+                  <div class="step-title">Delivery</div>
+                </ng-template>
+                <app-checkout-delivery #stepTwo></app-checkout-delivery>
+              </cdk-step>
+
+              <cdk-step [stepControl]="stepThree.stepReviewForm" [optional]="true">
+                <ng-template cdkStepLabel>
+                  <div class="step-bullet">3</div>
+                  <div class="step-title">Review </div>
+                </ng-template>
+                <app-checkout-review [appStepper]="cdkStepper" #stepThree></app-checkout-review>
+              </cdk-step>
+
+              <cdk-step [stepControl]="stepFour.stepPaymentForm" [optional]="false">
+                <ng-template cdkStepLabel>
+                  <div (click)="createPaymentIntent()" class="step-bullet">4</div>
+                  <div class="step-title">Payment</div>
+                </ng-template>
+                <app-checkout-payment #stepFour></app-checkout-payment>
+              </cdk-step>
+            </ng-stepper>
+          </div>
+        </div>
+
+        <!-- summary -->
+        <div class="col-lg-3 my-5">
+          <div class="d-flex justify-content-between">
+            <!-- Add any content or controls as needed -->
+          </div>
+          <div class="card mb-1 border shadow-0">
+            <total-summary [showPurchaseButtons]="false" [discount]="derivedDiscountValue" [tax]="derivedTaxValue"
+              [shipping]="derivedShippingValue" [subtotal]="derivedSubtotalValue"
+              [total]="derivedTotalValue"></total-summary>
+          </div>
+          <!-- summary -->
+        </div>
+      </div>
+    </div>

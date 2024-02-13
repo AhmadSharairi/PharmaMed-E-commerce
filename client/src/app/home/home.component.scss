@@ -1,0 +1,268 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0px;
+  padding: 0px;
+  border: 0px;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+.video-container {
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+
+
+*{
+    box-sizing: border-box;
+}
+
+
+.video-content {
+  -webkit-box-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: start;
+  justify-content: flex-start;
+  position: absolute;
+  padding:6rem 1rem 0px;
+  text-align: center;
+}
+
+
+.desktopVideo {
+  min-height: 49.5rem;
+  object-fit: cover;
+  min-width: 100%;
+  background-position: center center;
+  background-size: cover;
+  aspect-ratio: 1440 / 792;
+}
+
+.video-title {
+    color: rgb(255, 255, 255);
+    font-family: Lora, Georgia, serif;
+    font-size: 5rem;
+    line-height: 1.25;
+    max-width: 40rem;
+    margin: 0px auto 1.75rem;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 0.25rem 0.5rem;
+}
+
+
+
+
+
+
+/*ShopButton*/
+
+.cta {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.cta span {
+  padding-bottom: 7px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  padding-right: 15px;
+  text-transform: uppercase;
+}
+
+.cta svg {
+  transform: translateX(-8px);
+  transition: all 0.3s ease;
+}
+
+.cta:hover svg {
+  transform: translateX(0);
+}
+
+.cta:active svg {
+  transform: scale(0.9);
+}
+
+
+.hover-underline-animation {
+  position: relative;
+  color: black;
+  padding-bottom: 20px;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #000000;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.cta:hover .hover-underline-animation:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.evaluate-products-section {
+  background-color: rgb(255, 255, 255);
+  padding: 4rem 2rem 6rem;
+}
+
+
+
+/*section 2*/
+.evaluation-text-container {
+  padding: 1.875rem 0px;
+  margin: 0px auto 4rem;
+  max-width: 100%;
+  text-align: center;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 100%;
+  margin: 0px auto;
+}
+
+.evaluation-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 0.625rem;
+  margin-bottom: 3.125rem;
+  width: 100%;
+  max-width: 20rem;
+}
+
+.evaluation-description {
+  font-family: Lora, Georgia, serif;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.evaluation-name {
+  font-family: GingerOTF, Ginger, Helvetica, sans-serif;
+  font-size: 1.375rem;
+  font-weight: bold;
+  margin: 1.875rem 0px 0.6875rem;
+}
+
+.evaluation-title {
+  font-size: 2.625rem;
+  font-family: GingerOTF, Ginger, Helvetica, sans-serif;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.evaluation-description {
+  font-family: Lora, Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.625;
+  max-width: 31.25rem;
+  margin: 0px auto;
+}
+.evaluation-image {
+  width: 5rem;
+  max-height: 5rem;
+}
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .oNQef {
+    max-width: 100%; /* Change max-width to fit smaller screens */
+  }
+}
+
+
+
+/***/
+.Tdojf {
+  margin: 0px auto;
+  max-width: 160rem;
+  background-image: url("~src/assets/images/Organic.jpg");
+  background-repeat: no-repeat;
+  height: 38rem;
+  padding-top: 5.25rem;
+  padding-left: 1.5rem;
+  background-size: cover;
+  background-position-x: initial;
+  background-position-y: 75%;
+}
+
+
+.kZAsfb {
+  max-width: 17.8125rem;
+  font-size: 2rem;
+  line-height: 1.34;
+  color: white;
+  margin-bottom: 1.75rem;
+}
+.kZAsfb {
+  max-width: 17.8125rem;
+  font-size: 2rem;
+  line-height: 1.34;
+  color: white;
+  margin-bottom: 1.75rem;
+}
+.bCXuOR {
+  background-color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+/****/
+
+.qualitySection {
+  background-color: rgb(251, 220, 212);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3.9375rem 1.5rem 2.875rem;
+  width: 100%;
+  color: rgb(40, 44, 47);
+}
+
+.qualityTitle {
+  font-size: 1.75rem;
+  line-height: 1.29;
+  text-align: center;
+  margin-bottom: 2.75rem;
+}
+
+.qualityBadges {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem 1.375rem;
+}
+
+.qualityBadge, .qualityIcon {
+  margin-bottom: 0.875rem;
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.qualityBadgeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 7.75rem;
+  justify-content: flex-start;
+}

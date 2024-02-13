@@ -1,0 +1,89 @@
+/* Font Imports */
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400,500|PT+Sans+Narrow:400,700|Play:400,700|Ubuntu+Condensed&display=swap&subset=cyrillic');
+
+/* Common Styles */
+$base-font-family: 'Oswald', sans-serif;
+$accent-color: #ff4000;
+
+/* Breadcrumb Styles */
+.breadcrumb {
+  font-family: $base-font-family;
+  font-weight: bold;
+  color: black;
+  transform: skew(-1deg);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 18px;
+}
+
+/* Title Styles */
+.title {
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: #333;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+/* Container Styles */
+.container {
+  padding: 10px;
+}
+
+/* Special Line Styles */
+.special-line {
+  border: none;
+  height: 2px;
+  background: linear-gradient(to right, $accent-color, black);
+  margin-top: 5px;
+  border-radius: 10px;
+  width: 100px;
+}
+
+/* Breadcrumb Icon Styles */
+.breadcrumb-icon {
+  padding: 4px;
+}
+
+/* Heading Styles */
+h1 {
+  color: black;
+  font-family: $base-font-family;
+  font-size: 50px;
+}
+
+/* Column Styles */
+.col-3 {
+  display: flex;
+  justify-content: flex-end;
+}
+.breadcrumb-section {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  padding: 20px;
+}
+
+
+.breadcrumb-icon {
+  color: #fff;
+}
+
+.breadcrumb a {
+  color: #fff;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 576px) {
+  .breadcrumb {
+    font-size: 13px;
+  }
+}

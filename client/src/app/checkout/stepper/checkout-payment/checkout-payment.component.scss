@@ -1,0 +1,97 @@
+$brandcolor: #00c853;
+$light-grey: #eceff1;
+$grey: #cfd8dc;
+$typeScale: 1.33;
+$sizeBase: 18px;
+
+.payment {
+  margin-top: 36px;
+  padding: 0 10px;
+}
+
+.payment-tab {
+  background: $light-grey;
+  border: 2px solid $light-grey;
+  box-sizing: border-box;
+  height: 60px;
+  overflow: hidden;
+  padding: 13px 20px;
+  position: relative;
+  transition: 150ms ease-out;
+  width: 100%;
+}
+
+.payment-tab:first-of-type {
+  border-radius: 5px 5px 0 0;
+}
+
+.payment-tab:last-of-type {
+  border-radius: 0 0 5px 5px;
+}
+
+.payment-tab-isActive {
+  background: #ffffff;
+}
+
+.payment-tab-isActive:nth-of-type(1) {
+  height: 140px;
+}
+
+.payment-tab-isActive:nth-of-type(2) {
+  height: 240px;
+}
+
+.payment-cardimg {
+  height: 25px;
+  position: absolute;
+  right: 19px;
+  top:25px;
+  width: 96px;
+}
+
+.payment-radioGroup{
+  height: 25px;
+  top:35px;
+}
+
+.textInputGroup > input {
+  border: 2px solid $grey;
+  border-radius: 5px;
+  box-sizing: border-box;
+  display: block;
+  font: 400 $sizeBase 'Jaldi', sans-serif;
+  height: 50px;
+  margin: -15px auto 5px;
+  padding: 5px 10px 0 11px;
+  transition: 100ms ease-out;
+  width: 100%;
+}
+
+.textInputGroup > input:focus {
+  border: 2px solid $brandcolor;
+  outline: 0;
+}
+
+.textInputGroup > label {
+  background: #ffffff;
+  display: inline-block;
+  font: 700 $sizeBase 'Jaldi', sans-serif;
+  margin: 5px auto auto 8px;
+  padding: 0px 5px;
+}
+
+.row .textInputGroup-halfWidth,
+.row .textInputGroup-halfWidthRight {
+  width: 100%;
+  margin-bottom: 15px; // Add some spacing between rows
+}
+
+// Media Queries for responsiveness
+
+@media (max-width: 768px) {
+  .textInputGroup-halfWidth,
+  .textInputGroup-halfWidthRight {
+    float: none;
+    width: 100%;
+  }
+}

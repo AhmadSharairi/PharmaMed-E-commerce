@@ -1,0 +1,55 @@
+<div       [ngClass]="{imageBackground: isLoaded}">
+<div class="container  " *ngIf="isLoaded && orders.length > 0">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-4">
+          <h2>Details for <b>Order</b></h2>
+        </div>
+        <div class="col-sm-8">
+          <a class="btn btn-primary" [title]="'Refresh List'" (click)="refreshList()">
+            <i class="material-icons">&#xE863;</i> <span>Refresh List</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="scrollable-table">
+      <table class="table table-striped table-bordered table-sm">
+        <thead>
+          <tr>
+            <th>Index</th>
+            <th>Order Number</th>
+            <th>Order Date</th>
+            <th>Status</th>
+            <th>Net Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <ng-container *ngFor="let order of orders; let i = index">
+            <tr style="cursor: pointer" routerLink="/orders/{{order.id}}">
+              <td>{{i+1}}</td>
+              <td>{{order.id}}</td>
+              <td>{{ order.orderTime | date: 'medium' }}</td>
+              <td>
+                <span class="status" [ngClass]="getStatusClass(order.status)">&bull;</span>{{ order.status }}
+              </td>
+              <td>{{ order.total | currency}}</td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <div *ngIf="noOrdersFound" class="text-center custom-container">
+    <a (click)="navigateToShop()" class="custom-icon">
+      <i class="bx bxs-cart-add fa-5x"></i>
+    </a>
+    <p class="custom-message">
+      Your basket is empty, and you haven't submitted any orders yet!
+    </p>
+  </div>

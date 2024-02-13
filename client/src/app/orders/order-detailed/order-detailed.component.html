@@ -1,0 +1,61 @@
+<div *ngIf="orders">
+  <!-- Cart and Summary -->
+  <section class="bg-light my-9 backgroundImage">
+    <div class="container">
+      <div class="row justify-content-center">
+        <!-- Cart -->
+        <div class="col-lg-9 my-5">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="p-2 text-uppercase fw-bold">Product</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase fw-bold">Price</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase fw-bold">Quantity</div>
+                  </th>
+                  <th scope="col" class="border-0 bg-light">
+                    <div class="py-2 text-uppercase fw-bold">Total</div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <ng-container *ngIf="orders && orders.orderItems">
+                  <tr *ngFor="let item of orders.orderItems">
+                    <th scope="row">
+                      <div class="d-flex align-items-center">
+                        <img src="{{item.pictureUrl}}" alt="Product" class="border rounded me-3"
+                          style="width: 64px; height: 64px;" />
+                        <div class="d-inline-block">
+                          <p class="mb-0">{{item.productName}}</p>
+                        </div>
+                      </div>
+                    </th>
+                    <td class="align-middle"><strong>{{item.price | currency}}</strong></td>
+
+                    <td class="align-middle">
+                      <span  class="font-weight-bold">{{item.quantity}}</span>
+                    </td>
+
+
+
+                    <td class="align-middle"><strong>{{item.price * item.quantity | currency}}</strong></td>
+                  </tr>
+                </ng-container>
+              </tbody>
+            </table>
+          </div>
+
+          <total-summary  *ngIf="orders " [showPurchaseButtons]="false" [subtotal]="orders?.subtotal || 0"
+            [shipping]="orders?.shippingPrice || 0" [total]="orders?.total || 0" [discount]="discount || 0"
+            [tax]="tax || 0">
+          </total-summary>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

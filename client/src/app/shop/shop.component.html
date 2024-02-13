@@ -1,0 +1,112 @@
+<div class="my-5"></div>
+<div class="custom-background position-relative overflow-hidden p-3 p-md-5 m-md-0 text-center  my-5" style="height: 420px;"  [@fadeInOut]="scrollOffset" *ngIf="loadingFinished">
+
+  <div class="col-md-5 p-lg-7 mx-auto my-5" >
+    <h1 class="display-4 font-weight-normal">Discover the Power of Supplements</h1>
+    <p class="lead font-weight-normal">Explore the benefits and impact of various supplements on your health and
+      well-being.</p>
+
+    <form class="d-flex search-form">
+      <!-- Search input -->
+      <div class="form-group mx-auto" style="flex-grow: 1;">
+        <div class="input-group">
+          <input (keyup)="onSearch()" class="form-control border-end-0 border rounded-pill" type="search" name="search"
+            placeholder="Search products..." #search>
+          <span class="input-group-append">
+            <button (click)="onReset()"
+              class="btn btn-outline-secondary bg-white border-bottom-0 border rounded-pill ms-2" type="button">
+              Reset
+            </button>
+          </span>
+        </div>
+      </div>
+    </form>
+
+
+
+<div class="container my-2"  *ngIf="products && loadingFinished">
+
+    <ng-container *ngIf="brands && types">
+      <div class="d-flex justify-content-center mt-5 ">
+
+           <label for="typeSelect" class="selectbtn">Type:</label>
+        <select id="typeSelect" class="form-select selectbtn  " [(ngModel)]="shopParams.typeId"
+          (ngModelChange)="onTypeSelected($event)">
+          <option *ngFor="let type of types" [value]="type.id" [selected]="type.id === shopParams.typeId">
+            {{ type.name }}
+          </option>
+        </select>
+
+        <label for="brandSelect" class="selectbtn">Brands:</label>
+        <select id="brandSelect" class="form-select selectbtn" [(ngModel)]="shopParams.brandId"
+          (ngModelChange)="onBrandSelected($event)">
+          <option *ngFor="let brand of brands" [value]="brand.id" [selected]="brand.id === shopParams.brandId">
+            {{ brand.name }}
+          </option>
+        </select>
+
+      </div>
+    </ng-container>
+</div>
+
+
+  </div>
+
+
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
+</div>
+
+<div class="container">
+  <div class="pb-4" *ngIf="loadingFinished">
+    <header class="page justify-content-between align-items-center d-flex">
+      <!-- Paging Header component -->
+      <paging-header [pageNumber]="shopParams.pageNumber" [pageNumItems]="shopParams.pageNumItems"
+        [totalCountProducts]="totalCountProducts">
+      </paging-header>
+
+      <div class="d-flex ml-auto">
+        <select class="form-select" (change)="onSortSelected($event.target.value)">
+          <option disabled selected>Sort by:</option>
+          <option *ngFor="let sort of sortOptions" [selected]="shopParams.sort === sort.value" [value]="sort.value">
+            {{ sort.name }}
+          </option>
+        </select>
+
+      </div>
+    </header>
+  </div>
+
+  <!-- items -->
+  <div class="row no-gutters">
+    <div class="col-lg-11 col-md-11 ">
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-md-3 col-sm-3  my-5" *ngFor="let product of products">
+          <app-product-item [product]="product" [showProductInfo]="true"></app-product-item>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="d-flex justify-content-center my-5 " *ngIf=" totalCountProducts != 0">
+      <app-pager [totalCount]="totalCountProducts" [NumItems]="shopParams.pageNumItems "
+        [pageNumber]="shopParams.pageNumber" (pageChanged)="onPageChanged($event) ">
+      </app-pager>
+    </div>
+
+
+
+
+
+    <div class="d-flex justify-content-center no-results-message container" style=" margin-top: 50px;  padding: 200px;"
+      *ngIf=" totalCountProducts === 0  &&  loadingFinished ">
+      <div class="no-results-container">
+        <div class="no-results-text">
+          <h3><i class="fa fa-exclamation-circle" aria-hidden="true"></i> No Results Found</h3>
+          <p>Sorry, there are no products that match your filter.</p>
+        </div>
+      </div>
+    </div>
+  </div>

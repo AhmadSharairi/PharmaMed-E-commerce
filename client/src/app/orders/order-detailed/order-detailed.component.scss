@@ -1,0 +1,17 @@
+/* Add this to your CSS or in a style tag in the head */
+.table-container {
+  overflow-x: auto;
+}
+.backgroundImage {
+  background-image: url('../../../assets/images/upper.jpg');
+  background-repeat: no-repeat, no-repeat;
+  background-position: 50% 50%, center top;
+  background-size: cover, contain;
+  padding: 4.8125rem 0px 4.5rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-align: center;
+  align-items: center;
+  color: rgb(40, 44, 47);
+}
+

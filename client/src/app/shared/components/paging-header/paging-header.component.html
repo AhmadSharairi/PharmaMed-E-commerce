@@ -1,0 +1,17 @@
+<header>
+     <ng-container>
+      <span style="font-weight: bold">
+        Showing <strong>
+          {{ pageNumber *pageNumItems
+             > totalCountProducts
+            ? this.totalCountProducts
+            : pageNumber*pageNumItems }}
+        </strong> of <strong>{{ totalCountProducts }}</strong> Results
+      </span>
+    </ng-container>
+
+
+
+
+</header>
+

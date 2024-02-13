@@ -1,0 +1,228 @@
+//remove icon
+.button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(20, 20, 20);
+  border: none;
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.164);
+  cursor: pointer;
+  transition-duration: 0.3s;
+  overflow: hidden;
+  position: relative;
+  gap: 2px;
+}
+
+.svgIcon {
+  width: 12px;
+  transition-duration: 0.3s;
+}
+
+.svgIcon path {
+  fill: white;
+}
+
+.button:hover {
+  transition-duration: 0.3s;
+  background-color: rgb(255, 69, 69);
+  align-items: center;
+  gap: 0;
+}
+
+.bin-top {
+  transform-origin: bottom right;
+}
+.button:hover .bin-top {
+  transition-duration: 0.5s;
+  transform: rotate(160deg);
+}
+
+
+
+
+/**/
+
+
+.price,
+.priceItem,
+.totalPrice {
+  position: relative;
+  font-size: 15px;
+  color: #2B2B2F;
+}
+
+
+
+
+.pointr {
+  cursor: pointer
+}
+
+.price {
+  font-weight: 900;
+}
+
+.priceItem {
+  font-weight: 500;
+}
+
+.totalPrice {
+  font-size: 18px;
+  font-weight: 1000;
+}
+
+.icon-hover-primary:hover {
+  border-color: #3b71ca !important;
+  background-color: white !important;
+}
+
+.icon-hover-primary:hover i {
+  color: #3b71ca !important;
+}
+
+.icon-hover-danger:hover {
+  border-color: #dc4c64 !important;
+  background-color: white !important;
+}
+
+.icon-hover-danger:hover i {
+  color: #dc4c64 !important;
+}
+
+.card-container {
+  border: none;
+  box-shadow: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 300px;
+  border-left: 2px solid #2021;
+  scrollbar-width: thin;
+  scrollbar-color: #2021 #f0f0f0;
+}
+
+/* Customize the scrollbar thumb and track */
+.card-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+  background-color: #2021;
+  border-radius: 4px;
+}
+
+.card-container::-webkit-scrollbar-thumb:hover {
+  background-color: #1010;
+}
+
+.card-container::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+}
+
+
+
+
+
+.quantity {
+  display: inline-flex;
+  /* Use flexbox to align items horizontally */
+
+  .input-text.qty {
+    width: 35px;
+    height: 39px;
+    padding: 0 5px;
+    text-align: center;
+    background-color: transparent;
+    border: 1px solid #efefef;
+  }
+
+  &.buttons_added {
+    align-items: center;
+    /* Vertically center items */
+
+    input {
+      display: inline-block;
+      margin: 0;
+      vertical-align: top;
+      box-shadow: none;
+    }
+
+    .minus,
+    .plus {
+      padding: 7px 10px 8px;
+      height: 41px;
+      background-color: #ffffff;
+      border: 1px solid #efefef;
+      cursor: pointer;
+
+      &.minus {
+        border-right: 0;
+      }
+
+      &.plus {
+        border-left: 0;
+      }
+
+      &:hover {
+        background: #eeeeee;
+      }
+    }
+
+
+
+    .quantity-number {
+      margin: 0 5px;
+      /* Add margin to separate the number from buttons */
+      font-weight: bold;
+      color: black;
+      /* You can adjust the color as needed */
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    .minus:focus,
+    .plus:focus {
+      outline: none;
+    }
+  }
+
+
+
+  @media (max-width: 768px) {
+    .quantity {
+      display: block;
+
+      .input-text.qty {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .buttons_added {
+        flex-direction: column;
+
+        .minus,
+        .plus {
+          width: 100%;
+          border: 1px solid #efefef;
+          border-top: 0;
+          border-bottom: 1px
+        }
+
+        .quantity-number {
+          margin: 10px 0;
+        }
+
+
+      }
+    }
+  }
+}

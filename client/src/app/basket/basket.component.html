@@ -1,0 +1,61 @@
+<div>
+  <!-- cart + summary -->
+  <section class="bg-light my-9 imageBackground">
+    <div class="container">
+      <ng-container *ngIf="(breadcrumb$ | async) as breadcrumbs">
+        <!-- Breadcrumb Section -->
+        <div class="breadcrumb-section my-3">
+          <div class="container">
+            <div class="col-md-4">
+              <div class="breadcrumb">
+                <i class="bi bi-house-door-fill breadcrumb-icon"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="row justify-content-center ">
+        <!-- cart -->
+        <div class="col-lg-9 my-5">
+          <basket-summary></basket-summary>
+          <div class="card border shadow-0">
+            <div class="border-top pt-4 mx-4 mb-4">
+              <p><i class='bx bxs-truck'></i> Enjoy free delivery within 1-2 weeks! </p>
+              <p class="text-muted">
+                We're committed to making your shopping experience hassle-free and
+                convenient. Choose from our delivery options, including NextDay, Standard , Economy
+                 or LocalPickup for free!
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- cart -->
+
+        <!-- summary -->
+        <div class="col-lg-3 my-4 ">
+          <div class="card mb-1 border shadow-0">
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <label class="form-label">Have coupon?</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control border" name="" placeholder="Coupon code" />
+                    <button class="btn btn-light border">Apply</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <total-summary [showPurchaseButtons]="true" [discount]="derivedDiscountValue" [tax]="derivedTaxValue"
+              [shipping]="derivedShippingValue" [subtotal]="derivedSubtotalValue" [total]="derivedTotalValue">
+            </total-summary>
+
+          </div>
+          <!-- summary -->
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </section>

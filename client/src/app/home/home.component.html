@@ -1,0 +1,157 @@
+<section>
+
+  <div class="video-container">
+    <!-- <div class="video-hero__MobileVideo-sc-1cyrxk8-1 LUWqV"><video aria-hidden="true" autoplay="" loop="" playsinline=""
+      poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      src="assets/videos/Homepage_Mobile.mp4"
+      class=" czzHpH"></video>
+    </div>
+                <div class="video-hero__TabletVideo-sc-1cyrxk8-2 iOvtIX my-5"><video aria-hidden="true" autoplay="" loop="" playsinline=""
+      poster="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+      src="assets/videos/Homepage_Tablet.mp4"
+      class="elikDm">
+    </video>
+    </div>-->
+
+    <div style="height: max-content">
+      <video class="desktopVideo" aria-hidden="true" autoplay="" loop="" playsinline=""
+        src="assets/"></video>
+    </div>videos/Homepage_Desktop.mp4
+
+    <div><video aria-hidden="true" autoplay="" loop="" playsinline="" src="/client/src/assets/videos/Homepage_Desktop.mp4"
+        class="desktopVideo"></video>
+    </div>
+
+    <div class="video-content ">
+      <h2 class="video-title">Fitness Boosts. Vital Nutrients.</h2>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<section class="evaluate-products-section">
+  <div class="evaluation-text-container">
+    <h2 class="evaluation-title">How we evaluate products</h2>
+    <p class="evaluation-description">Our product evaluation is based on meticulous categorization of
+      scientific research. We consider study quantity, result coherence, significance, and distinctive methodologies.
+    </p>
+  </div>
+
+  <div class="cards">
+
+    <div class="evaluation-card">
+      <img
+        src="//images.ctfassets.net/t9x0u6p47op0/Pe92gubLxiQQU4LAje8Xg/ae7e32623ea2f7d6b8b48e65f16c4b3e/limited_research__1_.svg"
+        class=" evaluation-image">
+      <div class="evaluation-name">ExploroInsights Limited</div>
+      <div class="evaluation-description">While impacts have been explored, scientific evidence is scant</div>
+    </div>
+
+    <div class="evaluation-card">
+      <img
+        src="//images.ctfassets.net/t9x0u6p47op0/1LV6HcgHMd5zUqqCMNNWTW/ae0794711723bb3bd1da4cda61b66b5e/emerging-research__1_.svg"
+        class=" evaluation-image">
+      <div class="evaluation-name">Inceptive Inquiries</div>
+      <div class="evaluation-description">Predominantly Recent Studies with Promising Findings
+      </div>
+    </div>
+
+    <div class="evaluation-card">
+      <img
+        src="//images.ctfassets.net/t9x0u6p47op0/6gx4IucFkvcx8pV3Cia8ud/da4600683e818111b592ff502b8cfe84/good-research__1_.svg"
+        class="evaluation-image">
+      <div class="evaluation-name">Quality Insights</div>
+      <div class="evaluation-description">Limited, high-quality studies with positive results</div>
+    </div>
+
+    <div class="evaluation-card">
+      <img
+        src="//images.ctfassets.net/t9x0u6p47op0/5z5yqipNWD7ZjnaktAsQvA/70e7b464c4e3dff54a9ba354956f9c57/strong_research__1_.svg"
+        class="evaluation-image">
+      <div class="evaluation-name">Robust Investigations</div>
+      <div class="evaluation-description">High-quality studies with consistent positive outcomes</div>
+    </div>
+
+    <div class="evaluation-card">
+      <img
+        src="//images.ctfassets.net/t9x0u6p47op0/6cdC4H3Tdf6iAbDfa8bgqA/33686be09531af23d21db9ec8828d7a9/traditional_research__1_.svg"
+        class="evaluation-image">
+      <div class="evaluation-name">Time-Honored Studies</div>
+      <div class="evaluation-description">Trusted across cultures for centuries</div>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+
+
+<section class="bCXuOR">
+  <div class=" Tdojf">
+    <h2 class=" kZAsfb">You’re unique.<br>Your supplements should be too.</h2>
+  </div>
+</section>
+
+
+
+
+<section>
+  <div class="text-center my-3">
+
+    <button class="cta" (click)="navigateToShopPage()">
+      <span class="hover-underline-animation"> Shop now </span>
+      <svg id="arrow-horizontal" xmlns="http://www.w3.org/2000/svg" width="30" height="10" viewBox="0 0 46 16">
+        <path id="Path_10" data-name="Path 10" d="M8,0,6.545,1.455l5.506,5.506H-30V9.039H12.052L6.545,14.545,8,16l8-8Z"
+          transform="translate(30)"></path>
+      </svg>
+    </button>
+
+    <!-- items -->
+    <div class="container">
+    </div>
+    <div class="row no-gutters">
+      <div class="col-lg-11 col-md-11">
+        <div class="row no-gutters">
+          <div class="col-lg-12 col-md-12 col-sm-12 my-5">
+            <div class="d-flex">
+              <app-product-item *ngFor="let product of products.slice(0, 5)" [product]="product"
+                [showProductInfo]="false" [showReadMoreButtonInHomePage]="true" [showAddButton]="false"
+                class="flex-grow-1"></app-product-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="qualitySection">
+  <div class="qualityTitle"><em>Quality</em> you don't have to question</div>
+  <div class="qualityBadges">
+    <div class="qualityBadgeContainer">
+      <img src="//images.ctfassets.net/t9x0u6p47op0/4EUw8xFsRypRKYGSrEoq5x/dc1ce4e76a956dc1b647b08b3c47a1cf/Third-Party-Tested.svg" alt="Third-Party Tested" class="qualityIcon">
+      <div class="qualityBadge">Third-Party Tested</div>
+    </div>
+    <div class="qualityBadgeContainer">
+      <img src="//images.ctfassets.net/t9x0u6p47op0/4vMO7rzwijmUstZOLO5okv/c465150d00727b8bf823a8e740102b2f/No-Unnecessary-Fillers.svg" alt="No Unnecessary Fillers" class="qualityIcon">
+      <div class="qualityBadge">No Unnecessary Fillers</div>
+    </div>
+    <div class="qualityBadgeContainer">
+      <img src="//images.ctfassets.net/t9x0u6p47op0/7N2Eg9GNCudJ8m0wSXRlkt/3a6efe4bca7d330a315e5826ab94b13c/CLEAN__1_.svg" alt="Certified C.L.E.A.N." class="qualityIcon">
+      <div class="qualityBadge">Certified C.L.E.A.N.</div>
+    </div>
+    <div class="qualityBadgeContainer">
+      <img src="//images.ctfassets.net/t9x0u6p47op0/AQZrSyhtCs7aMSiYxvH6E/18873ef988eb3e08c1731c1f94bf7407/Non-GMO.svg" alt="Non-GMO" class="qualityIcon">
+      <div class="qualityBadge">Non-GMO</div>
+    </div>
+  </div>
+</section>

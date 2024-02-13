@@ -1,6 +1,6 @@
 ## Technologies Used
 
-- ASP.NET and Web API
+- ASP.NET 7 and Web API
 - SQl Server
 - **Angular CLI:** 16.1.5
 - **Node:** 18.17.1

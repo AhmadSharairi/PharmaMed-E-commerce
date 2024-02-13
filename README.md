@@ -1,5 +1,7 @@
 ## Technologies Used
 
+- **ASP.NET and Web API
+- **SQl Server
 - **Angular CLI:** 16.1.5
 - **Node:** 18.17.1
 - **Package Manager:** npm 10.3.0
@@ -12,6 +14,7 @@
 - `angular.json`: Angular configuration file.
 - `package.json`: NPM package file.
 - `tsconfig.json`: TypeScript configuration file.
+
 
 
 ## Dependencies

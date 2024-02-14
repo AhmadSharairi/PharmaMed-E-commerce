@@ -1,6 +1,6 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {  Observable, ReplaySubject, map, of } from 'rxjs';
+import {  Observable, ReplaySubject, catchError, map, of } from 'rxjs';
 import { environment } from 'src/environments/environment.development';
 import { Router } from '@angular/router';
 import { IUser } from './../shared/models/user';
@@ -108,11 +108,15 @@ if (token === null)
     return this.http.get<IAddress>(this.baseUrl + 'Account/user-address')
   }
 
-  updateUserAddress(address: IAddress)
-  {
-    return this.http.put<IAddress>(this.baseUrl + 'Account/update-address' , address);
+  updateUserAddress(address: IAddress) {
+    return this.http.put<IAddress>(this.baseUrl + 'Account/update-address', address)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error saving address:', error);
+          throw error;
+        })
+      );
   }
-
 
 
 

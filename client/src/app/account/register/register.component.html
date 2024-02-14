@@ -51,11 +51,11 @@
 
     <small *ngIf="registerForm.get('email').hasError('pattern') && registerForm.get('email').touched"
       class="text-danger required-input">
-      <i class='bx bx-error-circle'></i> The email you entered is invalid. Please check your email and try again.
+      <i class='bx bx-error-circle'></i> The email you entered is invalid.
     </small>
 
     <small *ngIf="registerForm.get('email').hasError('emailExists')" class="text-danger required-input">
-      <i class='bx bx-error-circle' style="size: 10px; "></i> Email is already in use.
+      <i class='bx bx-error-circle'></i> Email is already in use.
     </small>
     <!----- /Email Criteria ----->
 

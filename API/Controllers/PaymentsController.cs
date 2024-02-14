@@ -10,7 +10,6 @@ namespace API.Controllers
     public class PaymentsController : BaseApiController
     {
         private readonly IPaymentService _paymentService;
-        private readonly IConfiguration _configuration ;
         private readonly ILogger<PaymentsController> _logger;
         private readonly string _whSercret ;
 

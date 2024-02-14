@@ -20,13 +20,14 @@ namespace API.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
         private readonly IMapper _mapper;
+        private readonly ILogger<AccountController> _logger;
         private readonly AppIdentityDbContext _appIdentityDbContext;
 
 
-        public AccountController(UserManager<AppUser> userManger, SignInManager<AppUser> signInManager, 
-        ITokenService tokenService, IMapper mapper, AppIdentityDbContext appIdentityDbContext)
+        public AccountController(UserManager<AppUser> userManger, SignInManager<AppUser> signInManager,
+        ITokenService tokenService, IMapper mapper, AppIdentityDbContext appIdentityDbContext, ILogger<AccountController> logger)
         {
-
+            _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _userManager = userManger;
 
             _signInManager = signInManager;
@@ -89,23 +90,44 @@ namespace API.Controllers
         [HttpPut("update-address")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
-            var user = await _userManager.FindUserByClaimsPrincipalWithAddressAsync(HttpContext.User);
-
-            if (user == null)
+            try
             {
-                return NotFound(); // User not found
+                // Validate the model
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var user = await _userManager.FindUserByClaimsPrincipalWithAddressAsync(HttpContext.User);
+
+                if (user == null)
+                {
+                    return NotFound(); // User not found
+                }
+
+
+                // Attach the user's address to the DbContext
+                if (user.Address != null)
+                {
+                    _appIdentityDbContext.Attach(user.Address);
+                }
+
+
+                // Map and update the user's address
+                user.Address = _mapper.Map<AddressDto, Address>(address);
+
+                // Save changes directly without relying on UpdateAsync
+                await _appIdentityDbContext.SaveChangesAsync();
+
+                _logger.LogInformation("User address updated successfully.");
+
+                return Ok(_mapper.Map<Address, AddressDto>(user.Address));
             }
-
-            // Attach the user's address to the DbContext
-            _appIdentityDbContext.Attach(user.Address);
-
-            // Map and update the user's address
-            user.Address = _mapper.Map<AddressDto, Address>(address);
-
-            // Save changes directly without relying on UpdateAsync
-            await _appIdentityDbContext.SaveChangesAsync();
-
-            return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error updating user address.");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
 
@@ -140,7 +162,7 @@ namespace API.Controllers
                 // Log this unsuccessful login attempt for rate limiting/account lockout tracking.
                 // Implement rate limiting and account lockout logic here.
                 user.AccessFailedCount++; // Increase the count of failed login attempts for this user.
-                
+
 
                 if (user.AccessFailedCount >= 5)
                 {
@@ -211,7 +233,7 @@ namespace API.Controllers
 
 
 
-      
+
 
 
 

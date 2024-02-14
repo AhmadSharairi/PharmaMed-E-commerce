@@ -78,7 +78,6 @@ export class CheckoutAddressComponent implements AfterViewInit {
   }
 
   saveUserAddress() {
-
     try {
       // Update the user's address
       this.accountService

@@ -8,6 +8,12 @@
 - **Angular:** 16.2.1
 - **Bootstrap:** 5
 
+- ### YouTube Demo
+
+Check out our project demo on YouTube:
+
+[![PharmaMed E-commerce Demo](http://img.youtube.com/vi/M3Oi5PtnBNk/0.jpg)](https://www.youtube.com/watch?v=M3Oi5PtnBNk)
+
 ## Project Structure
 
 - `src/`: Contains the source code for the project.

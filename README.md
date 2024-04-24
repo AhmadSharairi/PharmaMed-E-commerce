@@ -8,7 +8,7 @@
 - **Angular:** 16.2.1
 - **Bootstrap:** 5
 
-- ### YouTube Demo
+## YouTube Demo
 
 Check out our project demo on YouTube:
 

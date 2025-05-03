@@ -9,12 +9,43 @@ using API.Extensions;
 using Stripe;
 using System.Net.NetworkInformation;
 using Microsoft.Extensions.FileProviders;
+using Serilog;
+using Serilog.Events;
 
 
 
 
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .WriteTo.Console()
+
+    // Info & Warning Logs
+    .WriteTo.Logger(lc => lc
+        .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Information || le.Level == LogEventLevel.Warning)
+        .WriteTo.File("Logs/info-.txt", rollingInterval: RollingInterval.Day, retainedFileCountLimit: 10)
+    )
+
+    // Error & Fatal Logs
+    .WriteTo.Logger(lc => lc
+        .Filter.ByIncludingOnly(le => le.Level == LogEventLevel.Error || le.Level == LogEventLevel.Fatal)
+        .WriteTo.File("Logs/errors-.txt",
+            rollingInterval: RollingInterval.Day,
+            retainedFileCountLimit: 10,
+     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff zzz} [{Level:u3}] {Message:lj}{NewLine}" +
+                "Exception: {Exception:format=ToString}{NewLine}" +
+                "Source: {SourceContext}{NewLine}" +
+                "RequestId: {RequestId}{NewLine}" +
+                "TraceId: {TraceId}{NewLine}" +
+                "Properties: {Properties:j}{NewLine}" +
+                "--------------------------------------------------------------------------------{NewLine}")
+
+    )
+    .CreateLogger();
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Use Serilog as the logging provider
+builder.Host.UseSerilog();
 
 // Add services to the container.
 builder.Services.AddControllers();

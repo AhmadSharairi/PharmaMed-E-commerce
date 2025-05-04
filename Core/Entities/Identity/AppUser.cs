@@ -1,3 +1,4 @@
+using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 
 namespace Core.Entities
@@ -6,10 +7,12 @@ namespace Core.Entities
     {   
 
         
-        public string DisplayName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public GenderType Gender { get; set; }
         
-         // Establish a one-to-one relationship with Address
-        public Address Address { get; set; }
+         //One-to-one relationship with Address
+        public Address ShippingAddress { get; set; }
    
     }
 

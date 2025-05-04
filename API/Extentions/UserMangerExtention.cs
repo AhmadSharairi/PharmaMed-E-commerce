@@ -15,7 +15,7 @@ public static class UserManagerExtension
             return null; 
         }
 
-        return await userManager.Users.Include(x => x.Address)
+        return await userManager.Users.Include(x => x.ShippingAddress)
             .SingleOrDefaultAsync(x => x.Email == emailClaim.Value);
     }
 

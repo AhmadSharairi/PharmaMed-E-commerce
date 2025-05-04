@@ -51,7 +51,9 @@ namespace API.Controllers
 
             return new UserDto
             {
-                DisplayName = user.DisplayName,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                 Gender = user.Gender,
                 Email = user.Email,
                 Token = _tokenService.CreateToken(user)
             };
@@ -81,7 +83,7 @@ namespace API.Controllers
             }
 
 
-            return _mapper.Map<Address, AddressDto>(user.Address);
+            return _mapper.Map<Address, AddressDto>(user.ShippingAddress);
         }
 
 
@@ -107,21 +109,21 @@ namespace API.Controllers
 
 
                 // Attach the user's address to the DbContext
-                if (user.Address != null)
+                if (user.ShippingAddress != null)
                 {
-                    _appIdentityDbContext.Attach(user.Address);
+                    _appIdentityDbContext.Attach(user.ShippingAddress);
                 }
 
 
                 // Map and update the user's address
-                user.Address = _mapper.Map<AddressDto, Address>(address);
+                user.ShippingAddress = _mapper.Map<AddressDto, Address>(address);
 
                 // Save changes directly without relying on UpdateAsync
                 await _appIdentityDbContext.SaveChangesAsync();
 
                 _logger.LogInformation("User address updated successfully.");
 
-                return Ok(_mapper.Map<Address, AddressDto>(user.Address));
+                return Ok(_mapper.Map<Address, AddressDto>(user.ShippingAddress));
             }
             catch (Exception ex)
             {
@@ -184,7 +186,9 @@ namespace API.Controllers
 
             return new UserDto
             {
-                DisplayName = user.DisplayName,
+              FirstName = user.FirstName,
+                LastName = user.LastName,
+                Gender = user.Gender,
                 Email = user.Email,
                 Token = token
             };
@@ -206,7 +210,8 @@ namespace API.Controllers
 
             var user = new AppUser
             {
-                DisplayName = registerDto.DisplayName,
+                FirstName = registerDto.FirstName,
+                LastName = registerDto.LastName,
                 Email = registerDto.Email,
                 UserName = registerDto.Email
             };
@@ -223,7 +228,8 @@ namespace API.Controllers
 
             return new UserDto
             {
-                DisplayName = user.DisplayName,
+                FirstName = user.LastName,
+                LastName =user.LastName,
                 Email = user.Email,
                 Token = token
             };

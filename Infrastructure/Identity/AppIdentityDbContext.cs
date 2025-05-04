@@ -1,4 +1,5 @@
 using Core.Entities;
+using Infrastructure.Data.Config;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -23,6 +24,7 @@ namespace Infrastructure.Identity
     {
 
          base.OnModelCreating(builder);
+         builder.ApplyConfiguration(new GenderConfiguration());
           
     }
 

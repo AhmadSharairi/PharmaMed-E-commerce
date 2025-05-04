@@ -40,7 +40,7 @@ namespace Core.Entities
 
 
         // Foreign key to link to AppUser
-        public string AppUserId { get; set; } //address.appUserId = AppUser.id
-        public AppUser AppUser { get; set; }
+       public string UserId { get; set; } //address.UserId = AppUser.Id
+        public AppUser User { get; set; } 
     }
 }

@@ -11,6 +11,7 @@ using System.Net.NetworkInformation;
 using Microsoft.Extensions.FileProviders;
 using Serilog;
 using Serilog.Events;
+using System.Text.Json.Serialization;
 
 
 
@@ -47,8 +48,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Use Serilog as the logging provider
 builder.Host.UseSerilog();
 
-// Add services to the container.
-builder.Services.AddControllers();
+// Add services to the container. 
+builder.Services.AddControllers().AddJsonOptions(options =>
+    {  // To send string type inasted sned int type to the db
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
 
 // Config Redis
 builder.Services.AddSingleton<IConnectionMultiplexer>(c =>

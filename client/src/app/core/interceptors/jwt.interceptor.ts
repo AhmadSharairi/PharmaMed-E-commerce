@@ -32,10 +32,9 @@ export class JwtInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
-          // Handle unauthorized access, for example, redirect to login page
           this.router.navigate(['/login']);
         } else {
-          // Handle other types of errors
+
           this.toastr.error('An error occurred. Please try again later.');
         }
 

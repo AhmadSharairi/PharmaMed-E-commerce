@@ -186,7 +186,7 @@ namespace API.Controllers
 
             return new UserDto
             {
-              FirstName = user.FirstName,
+                FirstName = user.FirstName,
                 LastName = user.LastName,
                 Gender = user.Gender,
                 Email = user.Email,
@@ -213,6 +213,7 @@ namespace API.Controllers
                 FirstName = registerDto.FirstName,
                 LastName = registerDto.LastName,
                 Email = registerDto.Email,
+                Gender =  registerDto.Gender,
                 UserName = registerDto.Email
             };
 
@@ -228,9 +229,10 @@ namespace API.Controllers
 
             return new UserDto
             {
-                FirstName = user.LastName,
+                FirstName = user.FirstName,
                 LastName =user.LastName,
                 Email = user.Email,
+                Gender = user.Gender,
                 Token = token
             };
 

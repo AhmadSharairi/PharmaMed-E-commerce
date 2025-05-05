@@ -1,36 +1,113 @@
 <div class="container">
-  <div class="heading">Register</div>
+  <div class="heading">Signup</div>
+
 
   <form [formGroup]="registerForm" (ngSubmit)="onRegister()" class="form password-input-container">
 
-    <!----------------------------------DisplayName Input------------------------------------->
+    <!----------------------------------FirstName Input------------------------------------->
     <div class="input-container">
-      <input formControlName="displayName" required class="input my-1 icon-input" type="text"
-        placeholder="Display Name" maxlength="20">
-      <i *ngIf="registerForm.controls['displayName'].value" (click)="clearDisplayName()" class='Name-clear bx bx-x'></i>
+      <input formControlName="firstName" required class="input my-1 icon-input" type="text" placeholder="First Name"
+        maxlength="20">
+      <i *ngIf="registerForm.controls['firstName'].value" (click)="clearFirstName()" class='Name-clear bx bx-x'></i>
     </div>
 
-    <!-- DisplayName Criteria Validation Messages -->
-    <small *ngIf="registerForm.controls['displayName'].dirty && registerForm.hasError('required', 'displayName')"
+    <!-- firstName Criteria Validation Messages -->
+    <small *ngIf="registerForm.controls['firstName'].dirty && registerForm.hasError('required', 'firstName')"
       class="text-danger required-input">
-      <i class='bx bx-error-circle'></i> Display Name is required
+      <i class='bx bx-error-circle'></i> First Name is required
     </small>
 
-    <small
-      *ngIf="registerForm.controls['displayName'].dirty && registerForm.controls['displayName'].hasError('minlength')"
+    <small *ngIf="registerForm.controls['firstName'].dirty && registerForm.controls['firstName'].hasError('minlength')"
       class="text-danger required-input">
-      <i class='bx bx-error-circle'></i> Display Name should be at least {{
-      registerForm.controls['displayName'].getError('minlength').requiredLength }} characters.
+      <i class='bx bx-error-circle'></i> Last Name should be at least {{
+      registerForm.controls['firstName'].getError('minlength').requiredLength }} characters.
     </small>
-    <!----- /DisplayName Criteria ----->
+    <!----- /firstName Criteria ----->
+
+
+
+
+
+    <!----------------------------------LastName Input------------------------------------->
+    <div class="input-container">
+      <input formControlName="lastName" required class="input my-1 icon-input" type="text" placeholder="Last Name"
+        maxlength="20">
+      <i *ngIf="registerForm.controls['lastName'].value" (click)="clearLastName()" class='Name-clear bx bx-x'></i>
+    </div>
+
+    <!-- lastName Criteria Validation Messages -->
+    <small *ngIf="registerForm.controls['lastName'].dirty && registerForm.hasError('required', 'lastName')"
+      class="text-danger required-input">
+      <i class='bx bx-error-circle'></i> Last Name is required
+    </small>
+
+    <small *ngIf="registerForm.controls['lastName'].dirty && registerForm.controls['lastName'].hasError('minlength')"
+      class="text-danger required-input">
+      <i class='bx bx-error-circle'></i> Last Name should be at least {{
+      registerForm.controls['lastName'].getError('minlength').requiredLength }} characters.
+    </small>
+    <!----- /lastName Criteria ----->
+
+
+
+    
+    <!---------------------------------- Gender Input ------------------------------------->
+
+    <div class="mb-3">
+      <label class="form-label d-block mb-2">Gender:</label>
+    
+      <div class="form-check form-check-inline">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="Male"
+          name="gender"
+          formControlName="gender"
+          [value]="Gender.Male"
+        />
+        <label class="form-check-label" for="genderMale">Male</label>
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="Female"
+          name="gender"
+          formControlName="gender"
+          [value]="Gender.Female"
+        />
+        <label class="form-check-label" for="genderFemale">Female</label>
+      </div>
+    
+      <div class="form-check form-check-inline">
+        <input
+          type="radio"
+          class="form-check-input"
+          id="Unspecified"
+          name="gender"
+          formControlName="gender"
+          [value]="Gender.Unspecified"
+        />
+        <label class="form-check-label" for="genderUnspecified">Unspecified</label>
+      </div>
+    
+      <small
+        *ngIf="registerForm.get('gender')?.invalid && (registerForm.get('gender')?.dirty || registerForm.get('gender')?.touched)"
+        class="text-danger d-block mt-1"
+      >
+        <i class="bx bx-error-circle"></i> Gender is required.
+      </small>
+    </div>
+    
 
 
     <!----------------------------------Email Input ------------------------------------->
 
-    <div class="input-container">
+    <div class="input-container my-3">
       <input formControlName="email" required [class.input]="!emailExists" [class.my-1]="!emailExists"
         [class.icon-input]="!emailExists" [class.inputError]="emailExists" type="email" placeholder="Email"
-        name="email"  >
+        name="email">
 
       <!-- Display loading indicator while checking for existing email -->
 

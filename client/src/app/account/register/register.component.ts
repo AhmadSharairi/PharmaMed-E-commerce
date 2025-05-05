@@ -5,14 +5,12 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-
-
 import { AccountService } from '../account.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { map, switchMap, timer } from 'rxjs';
 import { ValidateFormHelper } from 'src/app/helper/ValidateFormHelper';
+import { GenderType } from 'src/app/shared/models/GenderType';
 
 @Component({
   selector: 'app-register',
@@ -24,7 +22,7 @@ export class RegisterComponent implements OnInit {
   public showPassword = false;
   emailPattren: string = '^[\\w-\\.]{1,25}@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,6}$';
   emailExists: boolean = false;
-
+  Gender = GenderType;
 
   ngOnInit() {
     this.createRegisterForm();
@@ -36,9 +34,32 @@ export class RegisterComponent implements OnInit {
   ) {}
   createRegisterForm() {
     this.registerForm = this.fb.group({
-      displayName: ['', [Validators.required , Validators.maxLength(20) , Validators.minLength(6)]],
-      email: [ '',[Validators.required, Validators.pattern(this.emailPattren)],[this.validateEmailNotTaken()]],
-      password: [ '',  [Validators.required,ValidateFormHelper.passwordPatternValidator]]
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.minLength(3),
+        ],
+      ],
+      lastName: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(20),
+          Validators.minLength(3),
+        ],
+      ],
+      gender: ['', [Validators.required]],
+      email: [
+        '',
+        [Validators.required, Validators.pattern(this.emailPattren)],
+        [this.validateEmailNotTaken()],
+      ],
+      password: [
+        '',
+        [Validators.required, ValidateFormHelper.passwordPatternValidator],
+      ],
     });
   }
 
@@ -76,17 +97,24 @@ export class RegisterComponent implements OnInit {
     return this.registerForm.get(controlName).valid;
   }
 
-
-
-  clearDisplayName() {
-    if (this.registerForm.get('displayName').value) {
-      this.registerForm.get('displayName').reset();
-      this.registerForm.get('displayName').setValue('');
+  clearFirstName() {
+    if (this.registerForm.get('firstName').value) {
+      this.registerForm.get('firstName').reset();
+      this.registerForm.get('firstName').setValue('');
     }
   }
 
+  clearLastName() {
+    if (this.registerForm.get('lastName').value) {
+      this.registerForm.get('lastName').reset();
+      this.registerForm.get('lastName').setValue('');
+    }
+  }
+
+
   async onRegister() {
-    if (this.registerForm.valid) {
+    if (this.registerForm.valid)
+    {
       this.accountService.register(this.registerForm.value).subscribe({
         next: async () => {
           const successConfig = {
@@ -94,10 +122,12 @@ export class RegisterComponent implements OnInit {
             title: 'Register Successful!',
             text: 'Have fun shopping!',
           };
+          console.log(this.registerForm.value); 
           this.showSweetAlert(successConfig);
+
           this.router.navigateByUrl('/shop');
         },
-        error: error => {
+        error: (error) => {
           const errorConfig = {
             icon: 'error',
             title: 'Registration Error',
@@ -111,9 +141,6 @@ export class RegisterComponent implements OnInit {
     } else ValidateFormHelper.validateAllFormFields(this.registerForm);
   }
 
-
-
-
   public showSweetAlert(config: any) {
     const defaultConfig = {
       position: 'center',
@@ -125,8 +152,6 @@ export class RegisterComponent implements OnInit {
     };
     Swal.fire({ ...defaultConfig, ...config });
   }
-
-
 
   validateEmailNotTaken(): AsyncValidatorFn {
     return (control) => {
@@ -145,26 +170,4 @@ export class RegisterComponent implements OnInit {
       );
     };
   }
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
